@@ -21,6 +21,14 @@ branch = "main"
 profiles = ["all"]
 mode = "whole"
 
+# AdGuard Home 标准 LuCI 界面
+[adguardhome]
+repository = "https://github.com/kenzok8/openwrt-packages.git"
+branch = "master"
+profiles = ["s20p-mt76", "jdcloud-re-cs-06", "s20p-mtk", "x86-64", "7dr7299-mt76", "7dr7299-mtk"]
+mode = "nested"
+directories = ["luci-app-adguardhome"]
+
 # 代理界面
 [passwall]
 repository = "https://github.com/Openwrt-Passwall/openwrt-passwall.git"
