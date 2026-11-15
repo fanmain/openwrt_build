@@ -494,8 +494,6 @@ def integrate(lock, tree):
                     shutil.copytree(clone / directory, tree / "package" / directory, ignore=shutil.ignore_patterns(".git", ".github"))
     if "golang-daed" in lock["packages"]:
         use_daed_go_toolchain(tree, lock["packages"]["golang-daed"]["version"])
-    if "luci-app-adguardhome" in lock["packages"]:
-        use_packaged_adguardhome(tree)
     if "xray" in lock:
         xray = lock["xray"]
         remove_packages(tree, ["xray-core"])
@@ -537,16 +535,6 @@ def use_daed_go_toolchain(tree, version):
         if dependencies != 1 or includes != 1:
             raise ValueError(name + ": Go build declarations changed upstream")
         path.write_text(content)
-
-
-def use_packaged_adguardhome(tree):
-    # Use the upstream core without changing its version, Go or service files.
-    path = tree / "package/custom/luci-app-adguardhome/root/etc/config/AdGuardHome"
-    content, count = re.subn(r"(?m)^([ \t]*option[ \t]+binpath[ \t]+)'[^'\n]*'[ \t]*$",
-                            lambda m: m[1] + "'/usr/bin/AdGuardHome'", path.read_text())
-    if count != 1:
-        raise ValueError("AdGuard Home binary path defaults changed upstream")
-    path.write_text(content)
 
 
 def apply_source_patches(tree, profile, values):
