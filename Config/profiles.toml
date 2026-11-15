@@ -40,6 +40,7 @@ display_name = "TP-Link TL-7DR7299 v1 · MTK"
 hostname = "7DR7299-MTK"
 source = "padavan-7dr7299"
 config = "Config/TPLINK-7DR7299-MTK.txt"
+patches = ["Scripts/Patches/mt-wifi7-ac-num.patch"]
 
 [profiles.7dr7299-mtk.kernel_config]
 path = "target/linux/mediatek/filogic_a73/config-6.6"
