@@ -122,6 +122,8 @@ PROJECT_CONFIG = {
     "TARGET_MULTI_PROFILE": "y",
     "TARGET_PER_DEVICE_ROOTFS": "n",
     "TARGET_ROOTFS_INITRAMFS": "n",
+    # OpenWrt exposes CCACHE only when DEVEL is enabled.
+    "DEVEL": "y",
     "CCACHE": "y",
     "CCACHE_DIR": '\"\"',
 }
