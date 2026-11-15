@@ -22,12 +22,11 @@ profiles = ["all"]
 mode = "whole"
 
 # AdGuard Home 标准 LuCI 界面
-[adguardhome]
-repository = "https://github.com/kenzok8/openwrt-packages.git"
+[luci-app-adguardhome]
+repository = "https://github.com/rufengsuixing/luci-app-adguardhome.git"
 branch = "master"
 profiles = ["s20p-mt76", "jdcloud-re-cs-06", "s20p-mtk", "x86-64", "7dr7299-mt76", "7dr7299-mtk"]
-mode = "nested"
-directories = ["luci-app-adguardhome"]
+mode = "whole"
 
 # 代理界面
 [passwall]
